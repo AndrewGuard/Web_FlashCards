@@ -27,7 +27,7 @@ get '/createround/:deck_id' do
 end
 
 get '/round/:id' do
-  @current_round = Round.find(params[:id])  
+  @current_round = Round.find(params[:id])
   erb :round
 end
 

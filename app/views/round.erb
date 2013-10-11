@@ -1,19 +1,22 @@
 <div class="round">
   <h1>This is the round</h1>
+  
   <!-- DISPLAY CARD QUESTIONS -->
   <!-- TAKE CARD ANSWER -->
+  <% @guessed = Card.where(id: (Guess.where(round_id: @current_round.id).card_id) %>
+  <% binding.pry %>
    <% deck = Deck.find(@current_round.deck_id)%>
-
-   <% deck.cards.each do |card|%>
+    <% card = deck.cards.sample %>
+   <% unless @guessed.include?(card) == false %> 
      <%=card.question %>
      <!-- TODO: FIGURE OUT ACTION & POST -->
     <form action="/guess/<%= @current_round.id %>/<%= card.id %>" method="POST">
       <input type="text" name="answer">
       <input type="submit" value="Final Answer?">
     </form>  
-    <%end%>
+    <% end %>
   <br>
-   <a href="/">Home</a>
+  <a href="/">Home</a>
 </div>
 
 
