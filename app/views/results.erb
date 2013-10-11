@@ -1,0 +1,8 @@
+<% @guess = Guess.find(params[:guess_id]) %>
+<%if @guess.result == "t" %>
+CORRECT!
+<%else%>
+FALSE!
+<%end%>
+
+<a href="/round/<%= @guess.round_id %>">Back to Round</a>

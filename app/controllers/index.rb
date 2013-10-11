@@ -41,7 +41,6 @@ end
 
 post '/guess/:round_id/:card_id' do
   #CREATE CORRECT METHOD FOR CARD
-  binding.pry
   @guess = Guess.create(result: Card.find(params[:card_id].to_i).correct?(params[:answer]), 
                         round_id: params[:round_id], 
                         card_id: params[:card_id])
@@ -52,5 +51,5 @@ end
 
 # --------resluts--------#
 get "/results/:guess_id" do
-  "banana"
+  erb :results
 end
