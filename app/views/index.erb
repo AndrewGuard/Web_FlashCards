@@ -1,4 +1,6 @@
 <div class="index">
 <h1> This is the index</h1>
-<!-- TODO## <a href="/deck/1">Deck 1</a> Display all decks by name -->
+<% Deck.all.each do |deck| %>
+<a href="deck/<%= deck.id %>" >Deck <%=deck.name %> </a>
+<% end %>
 </div>
