@@ -2,12 +2,6 @@ get '/' do
   erb :index
 end
 
-#--------login---------#
-
-get '/login' do
-  erb :login
-end
-
 #--------deck---------#
 
 get '/deck/:id' do
@@ -58,5 +52,5 @@ end
 
 # --------resluts--------#
 get "/results/:guess_id" do
-  banana
+  "banana"
 end
