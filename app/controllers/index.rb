@@ -42,3 +42,21 @@ end
 get '/edit' do
   erb :edit
 end
+
+# --------guess-----------#
+
+post '/guess/:round_id/:card_id' do
+  #CREATE CORRECT METHOD FOR CARD
+  binding.pry
+  @guess = Guess.create(result: Card.find(params[:card_id].to_i).correct?(params[:answer]), 
+                        round_id: params[:round_id], 
+                        card_id: params[:card_id])
+  redirect to "/results/#{@guess.id}"
+  #answer = params[:answer]
+  #round_id = params[:round_id]
+end
+
+# --------resluts--------#
+get "/results/:guess_id" do
+  banana
+end
