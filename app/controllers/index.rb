@@ -11,14 +11,14 @@ end
 #--------deck---------#
 
 get '/deck/:id' do
-  @deck = deck.find(params[:id])
+  @deck = Deck.find(params[:id])
   erb :deck
 end
 
 #--------card---------#
 
 get '/card/:id' do
-  # @card = card.find(params[:id])
+  @card = Card.find(params[:id])
   erb :card
 end
 
