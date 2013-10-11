@@ -7,7 +7,7 @@
    <% deck.cards.each do |card|%>
      <%=card.question %>
      <!-- TODO: FIGURE OUT ACTION & POST -->
-    <form action="#" method="POST">
+    <form action="/guess/<%= @current_round.id %>/<%= card.id %>" method="POST">
       <input type="text" name="answer">
       <input type="submit" value="Final Answer?">
     </form>  
