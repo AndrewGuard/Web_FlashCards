@@ -1,3 +1,5 @@
 class Guess < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :round
+  belongs_to :user, through: :round
+  belongs_to :deck, through: :round
 end
