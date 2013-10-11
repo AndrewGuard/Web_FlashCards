@@ -29,7 +29,7 @@ get '/createround/:deck_id' do
   # TODO ----- Interpolate user_id
   new_round = Round.create(user_id: 1, deck_id: deck.id)
 
-  redirect to '/round/#{new_round.id}'
+  redirect to "/round/#{new_round.id}"
 end
 
 get '/round/:id' do
