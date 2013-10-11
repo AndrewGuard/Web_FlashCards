@@ -2,6 +2,11 @@
   <h1>This is the deck </h1>
   <!-- DISPLAYS ALL CARDS IN DECK -->
   <!-- TODO## Add a list of all cards with links-->
-  <!-- ADD a play button -->
-  <a href="/createround/<%= @deck.id %>">Play!</a>
+  Here are all the cards in the deck:<br>
+  <% @deck.cards.each do |card| %>
+    <%= card.question %> <br>
+    <%= card.answer %>
+  <% end %>
+  <br>
+  <a href="/createround/<%= @deck.id %>">Play!</a> <!-- This is going to the createround route -->
 </div>
