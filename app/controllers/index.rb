@@ -27,8 +27,14 @@ get '/createround/:deck_id' do
 end
 
 get '/round/:id' do
+
+  @counter ||= 0
   @current_round = Round.find(params[:id])
+    @deck ||= Deck.find(@current_round.deck_id).cards.shuffle!
+    @card = deck.cards[@counter]
   erb :round
+    end
+    redirect '/results'
 end
 
 # --------edit-----------#
@@ -44,12 +50,12 @@ post '/guess/:round_id/:card_id' do
   @guess = Guess.create(result: Card.find(params[:card_id].to_i).correct?(params[:answer]), 
                         round_id: params[:round_id], 
                         card_id: params[:card_id])
-  redirect to "/results/#{@guess.id}"
-  #answer = params[:answer]
-  #round_id = params[:round_id]
+  @counter += 1
+  redirect to "/round/#{params[:round_id]}"
 end
 
 # --------resluts--------#
-get "/results/:guess_id" do
-  erb :results
+get "/results" do
+  "Results"
+  # erb :results
 end
