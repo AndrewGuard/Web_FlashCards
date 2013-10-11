@@ -1,6 +1,7 @@
 <div class="index">
 <h1> This is the index</h1>
-<% Deck.all.each do |deck| %>
-<a href="deck/<%= deck.id %>" >Deck <%=deck.name %> </a>
-<% end %>
+  <% Deck.all.each do |deck| %>
+    <a href="deck/<%= deck.id %>" >Deck <%=deck.name %> </a>
+  <% end %>
+  <a href="/login" class="login_link"> Login </a>
 </div>
