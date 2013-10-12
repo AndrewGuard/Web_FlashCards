@@ -28,13 +28,13 @@ end
 
 get '/round/:id' do
 
-  @counter ||= 0
+  @counter = params[:counter] || 0
   @current_round = Round.find(params[:id])
-    @deck ||= Deck.find(@current_round.deck_id).cards.shuffle!
-    @card = deck.cards[@counter]
-  erb :round
+    @deck ||= Deck.find(@current_round.deck_id)
+    unless @counter >= @deck.cards.length
+    @card = @deck.cards[@counter]
+    erb :round
     end
-    redirect '/results'
 end
 
 # --------edit-----------#
@@ -50,12 +50,11 @@ post '/guess/:round_id/:card_id' do
   @guess = Guess.create(result: Card.find(params[:card_id].to_i).correct?(params[:answer]), 
                         round_id: params[:round_id], 
                         card_id: params[:card_id])
-  @counter += 1
-  redirect to "/round/#{params[:round_id]}"
+  @counter = @guess.id
+  redirect to "/round/#{params[:round_id]}/?counter=#{@guess.id}"
 end
 
 # --------resluts--------#
 get "/results" do
-  "Results"
-  # erb :results
+  "FUCK YOUUUUUU"
 end
